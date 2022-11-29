@@ -1,5 +1,6 @@
 plugins {
-    id 'java'
+    id "com.github.johnrengelman.shadow" version "5.0.0"
+    id "java"
 }
 
 group 'com.gemini.generic'
@@ -9,11 +10,33 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    cucumberVersion ='7.3.4'
+    serenityVersion = '3.3.7'
+    seleniumVersion = '4.4.0'
+    javaClientVersion = '8.1.1'
+    gsonVersion = '2.9.0'
+    webdriverManagerVersion = '5.2.3'
+    commonIOVersion = '2.11.0'
+    commonsCodecVersion = '1.11'
 }
 
-test {
-    useJUnitPlatform()
+dependencies {
+    implementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    implementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+    implementation "io.cucumber:cucumber-testng:${cucumberVersion}"
+    implementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
+    implementation "io.appium:java-client:${javaClientVersion}"
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    implementation "org.seleniumhq.selenium:selenium-remote-driver:${seleniumVersion}"
+    implementation "org.seleniumhq.selenium:selenium-api:${seleniumVersion}"
+    implementation "io.github.bonigarcia:webdrivermanager:${webdriverManagerVersion}"
+    implementation "com.google.code.gson:gson:${gsonVersion}"
+    implementation "commons-io:commons-io:${commonIOVersion}"
+    implementation "commons-codec:commons-codec:${commonsCodecVersion}"
 }
